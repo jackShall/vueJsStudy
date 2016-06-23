@@ -5,7 +5,54 @@
     <title>Title</title>
 </head>
 <body>
-
+<div id="test1">
+    {{a}}
+</div>
+<div id="example">
+     {{ a }}
+    <input v-model="a">
+</div>
+<div id="example-1">
+     {{{htmlVal}}}
+</div>
+<div id="example-2">
+    <ul>
+        <li v-for="item in items">
+            <div id="test{{$index}}">{{item.text}}</div>
+        </li>
+    </ul>
+    <div>
+        a={{a}},b={{b}}
+    </div>
+    <input type="number" v-model="a">
+    <p v-if="greeting">Hello!</p>
+    <a v-bind:href="url">百度一下，你就知道</a>
+    <a v-on:click="doSomething">点一下试试</a>
+    <a v-bind:href.literal = "/a/b/c">literal</a>
+    <a @click="otherThing">点击的简写</a>
+</div>
+<hr/>
+<div id="example-3">
+   {{fullName}}
+    <div>
+        <input v-model="firstName">
+        <input v-model="lastName">
+    </div>
+</div>
+<hr/>
+<div id="example-4">
+    {{fullName}}
+    <div>
+        <input v-model="firstName">
+        <input v-model="lastName">
+    </div>
+</div>
+<hr/>
+<div id="example-5">
+     <div v-bind:class="{'class-a':isA,'class-b':isB}">v-bind-class</div>
+     <div v-bind:class="classObject">classObject</div>
+     <div v-bind:style="styleObject">style</div>
+</div>
 </body>
 <script src="vue.js"></script>
 <script src="test1.js"></script>
