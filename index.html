@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <div>
+        <input v-model="message">
+    </div>
+</div>
+<div id="fortest">
+    <ul>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ul>
+</div>
+<div id="inputtest">
+    <input v-model="message">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+<div id="some">
+    <input v-model="newTodo" v-on:keyup.enter="addTodo">
+    <ul>
+        <li v-for="todo in todos">
+            <span>{{todo.text}}</span>
+            <button v-on:click="removeTodo($index)">X</button>
+        </li>
+    </ul>
+</div>
+<div id="example-1">
+    Hello {{ name }}{{pwd}}!
+</div>
+<div id="example-2">
+    <p v-if="greeting">Hello!</p>
+</div>
+<script src="vue.js"></script>
+<script src="mainController.js"></script>
+</body>
+</html>
