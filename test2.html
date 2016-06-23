@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <!--<template v-if="ok">-->
+        <!--<div>-->
+            <!--<h1>Yes</h1>-->
+            <!--<span>are you ready</span>-->
+        <!--</div>-->
+    <!--</template>-->
+    <h1 v-show="ok">Hello!</h1>
+    <h1 v-else>No</h1>
+    <button @click="trun">关闭</button>
+</div>
+<div id="example-1">
+    <ul>
+        <li v-for="item in items" @click="setArr($index)"  track-by="$index">
+            {{item.text}}
+        </li>
+    </ul>
+    <button @click="print">打印数组</button>
+    <div>
+        <span v-for="n in 10">{{ n }} </span>
+    </div>
+    <div v-for="(key, val) in object">
+        {{ key }} {{ val }}
+    </div>
+</div>
+<hr/>
+<div id="example-2">
+    <button @click="greet">greet</button>
+    <div @click="greet">
+        <button @click.stop="stop">阻止冒泡</button>
+    </div>
+    <div @click="greet">
+    <form action="http://www.baidu.com" method="get">
+        <button @click.submit.prevent="noSubmit" type="submit">阻止表单跳转</button>
+    </form>
+    </div>
+    <form action="http://www.baidu.com" method="get">
+        <button @click.stop.prevent="noSubmit" type="submit">阻止表单跳转并且阻止冒泡</button>
+    </form>
+</div>
+</body>
+<script src="vue.js"></script>
+<script src="test2.js"></script>
+</html>
