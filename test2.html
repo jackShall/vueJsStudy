@@ -4,6 +4,53 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    ul {
+        padding-left: 0;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    .staggered-transition {
+        transition: all .5s ease;
+        overflow: hidden;
+        margin: 0;
+        height: 20px;
+    }
+    .staggered-enter, .staggered-leave {
+        opacity: 0;
+        height: 0;
+    }
+    .bounce-transition {
+        display: inline-block; /* 否则 scale 动画不起作用 */
+    }
+    .bounce-enter {
+        animation: bounce-in .5s;
+    }
+    .bounce-leave {
+        animation: bounce-out .5s;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes bounce-out {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+</style>
 <body>
 <div id="example">
     <!--<template v-if="ok">-->
@@ -44,6 +91,52 @@
     <form action="http://www.baidu.com" method="get">
         <button @click.stop.prevent="noSubmit" type="submit">阻止表单跳转并且阻止冒泡</button>
     </form>
+</div>
+<hr/>
+<div id="example-3">
+    <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+    <label for="jack">jack</label>
+    <input type="checkbox" id="mark" value="mark" v-model="checkedNames">
+    <label for="mark">mark</label>
+    <input type="checkbox" id="mike" value="mike" v-model="checkedNames">
+    <label for="mike">mike</label>
+    <div>name:{{ checkedNames | json }}</div>
+    <select v-model="selected">
+        <option value="jack">A</option>
+        <option value="mike">B</option>
+        <option value="john">C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <select v-model="selectedNew">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selectedNew }}</span>
+    <div>
+        {{msg}}
+        <input v-model="msg" debounce="500">
+    </div>
+    <div>
+        {{age}}
+        <input v-model="age" number>
+    </div>
+    <div>
+        {{msgs}}
+        <input v-model="msgs" lazy>
+    </div>
+    <div id="demo">
+        <input v-model="query">
+        <ul>
+            <li v-for="item in options | filterBy query"
+                transition="staggered"
+                stagger="100">
+                {{item.text}}
+            </li>
+        </ul>
+    </div>
+    <span v-show="show" transition="bounce">Look at me!</span>
+    <button @click="show=!show">toggle</button>
 </div>
 </body>
 <script src="vue.js"></script>
