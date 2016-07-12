@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>init</title>
+    <link rel="stylesheet" href="style/init.css">
+</head>
+<body id="demoApp">
+
+<div id="wrapper">
+
+    <div id="scroller">
+
+        <ul class="list">
+            <li v-for="item in demoData">
+                {{item.text}}
+            </li>
+        </ul>
+
+    </div>
+
+    <div style="position: absolute; bottom: 0; text-align: center;">
+        上拉加载数据
+    </div>
+</div>
+<script src="iscroll.js"></script>
+<script src="vue.js"></script>
+<script src="init.js"></script>
+</body>
+</html>
